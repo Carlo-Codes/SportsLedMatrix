@@ -15,6 +15,7 @@ services:
 
  server:
    image: node:alpine
+   ##network_mode: "host"
    container_name: server
    entrypoint: /bin/sh
    ports:
