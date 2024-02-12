@@ -8,9 +8,8 @@ services:
       - 8000:8000
     working_dir: /srv/app
     volumes:
-        - ./ledMatrixClient:/srv/app
+        - ./client:/srv/app
         - /srv/app/node_modules
-        - ./clientEntrypoint.sh:/srv/app/clientEntrypoint.sh
     tty: true
     command: clientEntrypoint.sh
 
@@ -26,7 +25,6 @@ services:
    volumes:
        - ./server:/srv/app
        - /srv/app/node_modules
-       - ./serverEntrypoint.sh:/srv/app/serverEntrypoint.sh
    tty: true
    command: serverEntrypoint.sh
 
