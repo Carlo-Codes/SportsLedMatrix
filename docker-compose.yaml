@@ -1,0 +1,37 @@
+version: "3.4"
+services:
+ client:
+    image: node:alpine
+    container_name: client
+    entrypoint: /bin/sh
+    ports:
+      - 8000:8000
+    working_dir: /srv/app
+    volumes:
+        - ./ledMatrixClient:/srv/app
+        - /srv/app/node_modules
+        - ./clientEntrypoint.sh:/srv/app/clientEntrypoint.sh
+    tty: true
+    command: clientEntrypoint.sh
+
+ server:
+   image: node:alpine
+   container_name: server
+   entrypoint: /bin/sh
+   ports:
+     - 7000:7000
+   working_dir: /srv/app
+   environment:
+      NODE_ENV: development
+   volumes:
+       - ./server:/srv/app
+       - /srv/app/node_modules
+       - ./serverEntrypoint.sh:/srv/app/serverEntrypoint.sh
+   tty: true
+   command: serverEntrypoint.sh
+
+
+
+
+volumes:
+  node_modules:
