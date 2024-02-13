@@ -21,7 +21,7 @@
             "type": "node",
             "request": "attach",
             "name": "attache to process",
-            "port":9229
+            "port":9221
         },
         {
             "name": "Launch server.ts",
@@ -34,6 +34,22 @@
             "args": [
                 "${workspaceFolder}/server.ts"
             ]
-    }  
+        },
+        
+            {
+                "type": "node",
+                "request": "attach",
+                "name": "Debug server remote Pi",
+                "protocol": "inspector",
+                "address": "192.168.1.250",
+                "port": 9229,
+                "sourceMaps": true,
+                "restart": true,
+                "outDir": "${workspaceRoot}",
+                "localRoot": "${workspaceFolder}/server",
+                "remoteRoot": "SportsLedMatrix/server",
+     
+            }
+          
     ]
 }
